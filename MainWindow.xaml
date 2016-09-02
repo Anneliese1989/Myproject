@@ -1,0 +1,49 @@
+﻿<Window x:Class="Compression.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        Loaded="Window_Loaded"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        DataContext="{Binding RelativeSource={x:Static RelativeSource.Self}}"
+        xmlns:local="clr-namespace:Compression"
+        mc:Ignorable="d"
+        Title="文件打包"  Height="768" Width="1024"  Closing="Window_Closing"  IsEnabled="{Binding IsActived}"  >
+    <Grid Name="abc" >
+        <Button x:Name="button_encription" Content="加密" HorizontalAlignment="Left" Height="25" Margin="762,702,0,0" VerticalAlignment="Top" Width="56" Click="button_encription_Click"/>
+        <Button x:Name="button_chooseFile" Content="选择文件" HorizontalAlignment="Left" Height="25" Margin="744,15,0,0" VerticalAlignment="Top" Width="66" Click="button_chooseFile_Click"/>
+        <TextBlock Background="silver" x:Name="tb_ToDirectoryPath" Text="{Binding ToDirectoryPath}" HorizontalAlignment="Left" Height="25" Margin="128,15,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="594"/>
+        <Rectangle Name="rec1" Fill="Green" HorizontalAlignment="Left" Height="22" Margin="12,663,0,0" Stroke="Black" VerticalAlignment="Top" Width="0" RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform />
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <ComboBox x:Name="cmb_encrypt_compress" HorizontalAlignment="Left" Margin="670,702,0,0" VerticalAlignment="Top" Width="92" Height="25" RenderTransformOrigin="0.28,0.4">
+
+
+        </ComboBox>
+        <TextBlock x:Name="tb_pb_context" HorizontalAlignment="Left" Margin="12,663,0,0" TextWrapping="Wrap" Text="{Binding Pb_context,Mode=TwoWay}" VerticalAlignment="Top" Height="22" Width="64"/>
+        <TextBlock x:Name="tb_currentProgressFileName" HorizontalAlignment="Left" Margin="23,638,0,0" TextWrapping="Wrap" Text="{Binding CurrentProgressFileName,Mode=TwoWay}" VerticalAlignment="Top" Height="21" Width="auto"/>
+        <Button x:Name="button_decrypt" Content="解密" HorizontalAlignment="Left" Margin="842,702,0,0" Width="62" Click="button_decrypt_Click" Height="25" VerticalAlignment="Top"/>
+        <Button x:Name="button_choosefolder" Content="选择文件夹" HorizontalAlignment="Left" Height="25" Margin="818,15,0,0" VerticalAlignment="Top" Width="67" Click="button_choosefolder_Click" />
+        <ListView x:Name="listView" HorizontalAlignment="Left" Height="580" Margin="10,53,0,0" VerticalAlignment="Top" Width="984">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="文件名" Width="300" DisplayMemberBinding="{Binding Path=ResourceName}"/>
+                    <GridViewColumn Header="文件类型" Width="100" DisplayMemberBinding="{Binding Path=ResourceType}"/>
+                    <GridViewColumn Header="文件大小(MB)" Width="100" DisplayMemberBinding="{Binding Path=ResourceSize}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="10,20,0,0" TextWrapping="Wrap" Text="加密解密文件路径：" VerticalAlignment="Top" Width="113" Height="20" RenderTransformOrigin="0.7,-0.176"/>
+        <Button x:Name="button_compress" Content="压缩" HorizontalAlignment="Left" Margin="924,702,0,0" VerticalAlignment="Top" Width="56" Height="25" Click="button_compress_Click"/>
+        <ProgressBar Name="progressbar" HorizontalAlignment="Left" Height="22" Margin="91,663,0,0" VerticalAlignment="Top" Width="903" Value="{Binding Percent}"  />
+        <TextBlock x:Name="tb_fileNum_Copy" HorizontalAlignment="Left" Margin="829,638,0,0" TextWrapping="Wrap" Text="文件数：" VerticalAlignment="Top" Width="56" Height="21"/>
+        <TextBlock x:Name="tb_fileNum" Text="0" HorizontalAlignment="Left" Margin="906,638,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="56" Height="21"/>
+
+    </Grid>
+</Window>
